@@ -41,6 +41,8 @@ public class BallControl : MonoBehaviour
         }
         if(coll.gameObject.tag == "Brick"){
             Destroy(coll.gameObject);
+            GameManager.Score();
+            coll.gameObject.SendMessage("RestartGame", null, SendMessageOptions.RequireReceiver); // Adiciona ponto ao destruir bloco
         }
     }
 

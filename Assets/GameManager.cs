@@ -17,17 +17,16 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public static void Score (string wallID) {
-        if (wallID == "topWall")
-        {
-            PlayerScore++;
-        }
+    public static void Score () {
+        PlayerScore++;
     }
 
     // Gerência da pontuação e fluxo do jogo
     void OnGUI () {
         GUI.skin = layout;
         GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 20, 100, 100), "" + PlayerScore);
+        GUI.Label(new Rect(Screen.width / 2 - 150 - 12, 80, 100, 100), "" + PlayerScore);
+        
 
         // Botão RESTART na posição (0, 4)
         if (GUI.Button(new Rect(0, 4, 60, 26), "RESET"))
