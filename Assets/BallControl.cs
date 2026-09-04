@@ -39,6 +39,9 @@ public class BallControl : MonoBehaviour
 
             rb2d.linearVelocity = vel;
         }
+        if(coll.gameObject.tag == "Brick"){
+            Destroy(coll.gameObject);
+        }
     }
 
     // Reinicializa a posição e velocidade da bola
