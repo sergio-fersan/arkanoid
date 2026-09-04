@@ -47,7 +47,7 @@ public class BallControl : MonoBehaviour
     // Reinicializa a posição e velocidade da bola
     void ResetBall(){
         rb2d.linearVelocity = Vector2.zero;
-        transform.position = Vector2.zero;
+        transform.position = new Vector2(0, -3);
     }
 
     // Reinicializa o jogo
