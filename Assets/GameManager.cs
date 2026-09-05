@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             theBall.SendMessage("RestartGame", null, SendMessageOptions.RequireReceiver);
         }
         Scene scene = SceneManager.GetActiveScene();
-        int pontosParaVencer = scene.name == "nivel1" ? 35 : 42;
+        int pontosParaVencer = scene.name == "nivel1" ? 20 : 42;
 
         if (PlayerScore >= pontosParaVencer && (scene.name == "nivel1" || scene.name == "nivel2"))
         {
