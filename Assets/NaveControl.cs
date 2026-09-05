@@ -37,4 +37,5 @@ public class NaveControl : MonoBehaviour
         transform.position = pos;               // Atualiza a posição da nave
 
     }
+
 }

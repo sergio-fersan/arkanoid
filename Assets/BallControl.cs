@@ -28,16 +28,9 @@ public class BallControl : MonoBehaviour
     void OnCollisionEnter2D(Collision2D coll){
         if (coll.collider.CompareTag("Player"))
         {
-            Vector2 vel = rb2d.linearVelocity;
-
-            // Dá uma influência da velocidade da nave
-            vel.y += coll.collider.attachedRigidbody.linearVelocity.y * 0.3f;
-
-            // Mantém uma velocidade mínima
-            float velocidade = 6f;
-            vel = vel.normalized * velocidade;
-
-            rb2d.linearVelocity = vel;
+            float lado = coll.GetContact(0).point.x >= coll.collider.bounds.center.x ? 1f : -1f;
+            float inclinacao = Random.Range(1f, 2f);
+            rb2d.linearVelocity = new Vector2(lado * inclinacao, 1f).normalized * 6f;
         }
         if(coll.gameObject.tag == "Brick"){
             Destroy(coll.gameObject);
@@ -48,14 +41,27 @@ public class BallControl : MonoBehaviour
 
     // Reinicializa a posição e velocidade da bola
     void ResetBall(){
+        rb2d.simulated = true;
         rb2d.linearVelocity = Vector2.zero;
+        rb2d.angularVelocity = 0f;
         transform.position = new Vector2(0, -3);
+    }
+
+    void FreezeBall(){
+        rb2d.linearVelocity = Vector2.zero;
+        rb2d.angularVelocity = 0f;
+        rb2d.simulated = false;
     }
 
     // Reinicializa o jogo
     void RestartGame(){
         ResetBall();
         Invoke("GoBall", 1);
+    }
+
+    void Death(){
+        ResetBall();
+        
     }
 
 }

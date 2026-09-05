@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class theVoid : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         
@@ -13,4 +13,13 @@ public class theVoid : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter2D (Collider2D hitInfo) {
+        if (hitInfo.CompareTag("ball"))
+        {
+            GameManager.Death();
+            hitInfo.gameObject.SendMessage("RestartGame", null, SendMessageOptions.RequireReceiver);
+        }
+    }
+
 }
